@@ -38,7 +38,7 @@ export const definition = {
   partOfSpeech: "noun",
   meaning:
     "Someone who doesn't just imagine what could exist — they create it.",
-  note: "You already have the most important part: the idea.",
+  note: "Visionaries envision. Mationaries make.",
 } as const;
 
 export const recognition = {
