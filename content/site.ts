@@ -108,7 +108,7 @@ export const services = {
     {
       id: "build-with",
       name: "Build With Mationary",
-      duration: "3 private 90-minute sessions, generally over 2–4 weeks",
+      duration: "3 private 60-minute sessions, generally over 2–4 weeks",
       price: "$895",
       summary:
         "The core guided-build experience. Shape it, build it, refine it — with room to work between sessions.",
@@ -124,7 +124,7 @@ export const services = {
     {
       id: "build-day",
       name: "Mationary Build Day",
-      duration: "About 5 private hours, with a break",
+      duration: "Up to 7 private hours, with a break",
       price: "$1,750",
       summary:
         "A concentrated private build intensive for one project, designed to move your idea as far toward a working prototype as reasonably possible.",
