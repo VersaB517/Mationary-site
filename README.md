@@ -29,7 +29,7 @@ Almost all visible text lives in two files — no component edits needed:
 - [`content/site.ts`](content/site.ts) — hero, definition, recognition lines, how-it-works steps, **services and prices**, project-fit language, founder story, final CTA, footer.
 - [`content/intake-fields.ts`](content/intake-fields.ts) — the project-fit questionnaire: groups, labels, helper text, and choice options.
 
-Prices are plain strings (`"$249"`), and `featured: true` on a service controls which card gets the dark emphasized treatment.
+Prices are plain strings (`"$315"`), and `featured: true` on a service controls which card gets the dark emphasized treatment.
 
 ## Structure
 
