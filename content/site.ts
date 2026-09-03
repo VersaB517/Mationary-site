@@ -34,7 +34,7 @@ export const hero = {
 
 export const definition = {
   word: "mationary",
-  pronunciation: "/ˈmeɪ.ʃə.nɛr.i/",
+  pronunciation: "/MAY-shuh-nair-ee/",
   partOfSpeech: "noun",
   meaning:
     "Someone who doesn't just imagine what could exist — they create it.",
@@ -50,6 +50,20 @@ export const recognition = {
     "“I know what I want it to do. I just don't know how to build it.”",
   ],
   closing: "That's where Mationary starts.",
+} as const;
+
+export const possibilities = {
+  eyebrow: "What could we make?",
+  heading:
+    "You don’t need a technical idea. You just need something you wish existed.",
+  items: [
+    "A tool for your business.",
+    "A better way to handle a process.",
+    "A private system built around how you work.",
+    "A first version of the idea you’ve been carrying around.",
+  ],
+  closing:
+    "If you can explain the problem — or even just the idea — we can figure out what it could become.",
 } as const;
 
 export const howItWorks = {
@@ -92,8 +106,8 @@ export const services = {
     {
       id: "session",
       name: "Mationary Session",
-      duration: "75–90 minutes",
-      price: "$249",
+      duration: "60–75 minutes",
+      price: "$315",
       summary:
         "A focused private session to clarify your idea, identify the first version worth building, and choose the right AI-assisted approach.",
       details: [
@@ -176,7 +190,7 @@ export const about = {
   heading: "Where this came from",
   paragraphs: [
     "Mationary started from a simple realization: a traditional developer background is no longer required to begin building useful technology.",
-    "The founder came from business, not software engineering, and started using AI to create tools that solved real problems — the kind of problems you only notice when you've been doing the actual work.",
+    "The founder came from more than two decades in business, not software engineering, and started using AI to create tools that solved real problems — the kind of problems you only notice when you've been doing the actual work.",
     "The premise is straightforward. There are people sitting on valuable ideas simply because they don't realize they can build them now. Your domain knowledge is the hard part. The building is the part we can guide.",
   ],
 } as const;
@@ -202,6 +216,7 @@ export const intake = {
   heading: "Tell us about your idea.",
   intro:
     "This is how every Mationary project begins. Take a few minutes and answer in plain language — there's no wrong way to describe an idea, and you don't need to sound technical.",
+  reassurance: "Short answers are completely fine.",
   reviewNote:
     "Sending this isn't a booking, and it isn't an automatic yes. We read every submission and let you know whether Mationary is the right place for your idea to start.",
   privacyNote:

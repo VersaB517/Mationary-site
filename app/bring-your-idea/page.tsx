@@ -38,6 +38,9 @@ export default function BringYourIdeaPage() {
             <p className="mt-8 max-w-2xl text-lead leading-relaxed text-ink/80">
               {intake.intro}
             </p>
+            <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-muted">
+              {intake.reassurance}
+            </p>
           </Reveal>
         </Container>
       </section>
