@@ -1,20 +1,20 @@
 /**
- * Intake submission — placeholder.
+ * Intake submission — posts the questionnaire to `app/api/intake/route.ts`,
+ * which emails it to the studio inbox via Resend.
  *
- * Nothing is connected yet: no database, no email service, no CRM.
- * `submitIntake` validates shape and resolves, so the form is fully wired
- * on the client and ready for a real destination later.
- *
- * To connect it, replace the body with a POST to a route handler
- * (e.g. `app/api/intake/route.ts`) that forwards to your chosen provider.
- * Keep any keys in environment variables — never in source.
+ * The form only shows its confirmation when this resolves `{ ok: true }`, so a
+ * delivery failure surfaces to the visitor instead of being swallowed.
  */
+
+import { site } from "@/content/site";
 
 export type IntakeSubmission = Record<string, string>;
 
 export type IntakeResult =
   | { ok: true }
   | { ok: false; message: string };
+
+const FALLBACK_MESSAGE = `Something went wrong sending your idea. Please email ${site.contactEmail} and we'll pick it up from there.`;
 
 export async function submitIntake(
   data: IntakeSubmission,
@@ -23,12 +23,36 @@ export async function submitIntake(
     return { ok: false, message: "Please fill in the required fields." };
   }
 
-  // Simulated network latency so the UI reflects real submission behaviour.
-  await new Promise((resolve) => setTimeout(resolve, 700));
-
-  if (process.env.NODE_ENV === "development") {
-    console.info("[intake] submission captured (not sent anywhere yet)", data);
+  let response: Response;
+  try {
+    response = await fetch("/api/intake", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+  } catch {
+    // Offline, DNS failure, request blocked — nothing reached the server.
+    return { ok: false, message: FALLBACK_MESSAGE };
   }
 
-  return { ok: true };
+  let result: unknown = null;
+  try {
+    result = await response.json();
+  } catch {
+    // Non-JSON response (proxy error page, truncated body).
+  }
+
+  const body = (result ?? {}) as { ok?: unknown; message?: unknown };
+
+  if (response.ok && body.ok === true) {
+    return { ok: true };
+  }
+
+  return {
+    ok: false,
+    message:
+      typeof body.message === "string" && body.message
+        ? body.message
+        : FALLBACK_MESSAGE,
+  };
 }
